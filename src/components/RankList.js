@@ -14,6 +14,7 @@ function RankList({ users, currentPage, itemsPerPage }) {
           <div className="rank-details">
             <span className="name">{user.name}</span>
             <span className="points">{user.points.toLocaleString()} points</span>
+            <span className="trophy">🏆</span>
           </div>
         </div>
       ))}

@@ -3,20 +3,86 @@
   padding: 20px;
   background-color: #f5f5f5;
   font-family: Arial, sans-serif;
+  margin: 0 auto;
+  position: relative;
 }
 
-h1 {
-  font-size: 2rem;
-  color: #333;
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.text-center {
-  text-align: center;
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.text-muted {
+.tab {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: #333;
+  margin: 0 5px;
+}
+
+.tab.active {
+  color: #f8a31d;
+  border-bottom: 2px solid #f8a31d;
+}
+
+.help-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tab-button.active {
+  background-color: #fff;
+  border-bottom: 2px solid #f8a31d;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.settlement {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.rewards {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff6f61;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
 }
 
 /* Top Ranks Styling */
@@ -30,10 +96,27 @@ h1 {
   display: flex;
   justify-content: space-around;
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.trophy-background {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 100px;
+  background: url('/public/images/trophy.png') no-repeat center;
+  background-size: contain;
+  opacity: 0.2;
+  z-index: 0;
 }
 
 .rank-item {
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .top-1 .rank-details {
@@ -41,6 +124,7 @@ h1 {
   padding: 10px;
   border-radius: 5px;
   color: #333;
+  width: 120px;
 }
 
 .top-2 .rank-details,
@@ -49,13 +133,27 @@ h1 {
   padding: 10px;
   border-radius: 5px;
   color: #333;
+  width: 120px;
 }
 
 .rank-item img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   margin-bottom: 10px;
+  border: 2px solid #fff;
+}
+
+.top-1 img {
+  border-color: #ffd700;
+}
+
+.top-2 img {
+  border-color: #c0c0c0;
+}
+
+.top-3 img {
+  border-color: #cd7f32;
 }
 
 .rank-details .rank {
@@ -65,31 +163,42 @@ h1 {
 
 .rank-details .name {
   font-size: 1.1rem;
+  display: block;
 }
 
 .rank-details .points {
   font-size: 0.9rem;
 }
 
+.trophy {
+  font-size: 1.5rem;
+  margin-left: 5px;
+}
+
 /* Rank List Styling */
 .rank-list {
   margin-top: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .rank-item {
   display: flex;
   align-items: center;
-  padding: 10px;
-  background-color: #fff;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.rank-item:last-child {
+  border-bottom: none;
 }
 
 .rank-item .rank {
   font-weight: bold;
   margin-right: 10px;
-  min-width: 40px;
+  min-width: 30px;
+  color: #f8a31d;
 }
 
 .rank-item img {
@@ -105,11 +214,17 @@ h1 {
 
 .rank-details .name {
   font-size: 1rem;
+  color: #333;
 }
 
 .rank-details .points {
   font-size: 0.9rem;
   color: #666;
+}
+
+.trophy {
+  font-size: 1rem;
+  color: #f8a31d;
 }
 
 /* Pagination Styling */
@@ -125,6 +240,7 @@ h1 {
   border: 1px solid #ddd;
   background-color: #fff;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .pagination button.active {
@@ -138,17 +254,49 @@ h1 {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 576px) {
+  /* Mobile Devices (up to 576px) */
+  .App {
+    padding: 10px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tabs {
+    flex-direction: column;
+  }
+  .tab-button {
+    margin-bottom: 5px;
+    padding: 8px;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .settlement {
+    font-size: 0.7rem;
+  }
+  .rewards {
+    top: 5px;
+    right: 5px;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+  }
   .top-ranks {
     flex-direction: column;
     align-items: center;
+    padding: 10px;
+  }
+  .trophy-background {
+    width: 80px;
+    height: 60px;
   }
   .rank-item {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   .top-ranks .rank-item img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
   .rank-item {
     flex-direction: column;
@@ -156,10 +304,83 @@ h1 {
   }
   .rank-item img {
     margin-right: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+  }
+  .rank-details {
+    width: 100%;
   }
   .pagination button {
-    padding: 3px 8px;
+    padding: 3px 6px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 1024px) {
+  /* Tablet Devices (577px to 1024px) */
+  .App {
+    max-width: 600px;
+    padding: 15px;
+  }
+  .header {
+    flex-wrap: wrap;
+  }
+  .tabs {
+    flex-wrap: wrap;
+  }
+  .tab-button {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+  .settlement {
+    font-size: 0.75rem;
+  }
+  .rewards {
+    padding: 4px 9px;
+    font-size: 0.75rem;
+  }
+  .top-ranks .rank-item img {
+    width: 90px;
+    height: 90px;
+  }
+  .rank-item img {
+    width: 45px;
+    height: 45px;
+  }
+  .pagination button {
+    padding: 4px 8px;
     font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* PC Devices (1025px and above) */
+  .App {
+    max-width: 800px;
+    padding: 25px;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .settlement {
+    font-size: 0.9rem;
+  }
+  .rewards {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  .top-ranks .rank-item img {
+    width: 120px;
+    height: 120px;
+  }
+  .rank-item img {
+    width: 60px;
+    height: 60px;
+  }
+  .pagination button {
+    padding: 6px 12px;
+    font-size: 1.1rem;
   }
 }
