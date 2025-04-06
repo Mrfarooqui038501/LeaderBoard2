@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Leaderboard Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This is a React.js-based leaderboard application designed to display user rankings based on points. The application features a sticky top 3 ranks section and a paginated list for ranks 4–100, with 20 ranks per page. The UI is styled using Bootstrap and custom CSS, ensuring responsiveness across desktop and mobile browsers. The design is inspired by a provided screenshot, mimicking a weekly contribution ranking interface.
 
-## Available Scripts
+## Features
+- **Top 3 Ranks**: Fixed and always visible at the top, highlighted with distinct styling (e.g., gold, silver, bronze backgrounds).
+- **Paginated List**: Displays ranks 4–100 with 20 users per page, navigable via pagination controls.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Data-Driven**: User data is loaded from a JSON file (`users.json`) containing 100 users with ranks, names, points, and avatar placeholders.
+- **Styling**: Utilizes Bootstrap for base styling and custom CSS in `App.css` for a pixel-perfect match to the reference design.
 
-In the project directory, you can run:
+## Prerequisites
+- Node.js (version 14.x or higher)
+- npm (comes with Node.js)
 
-### `npm start`
+## Installation
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Mrfarooqui038501/LeaderBoard2.git
+   cd leaderboard
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Add Avatars**:
+   - Create a folder named `images` inside the `public/` directory.
+   - Add placeholder images named `avatar1.jpg` through `avatar100.jpg`. You can generate these using an online avatar tool (e.g., https://getavataaars.com/) or use images from the reference screenshot.
 
-### `npm test`
+4. **Start the Application**:
+   ```bash
+   npm start
+   ```
+   This will run the app in development mode. Open http://localhost:3000 to view it in your browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
+- The application loads 100 users from `src/data/users.json`.
+- The top 3 ranks are displayed in a sticky header with larger avatars and colored backgrounds.
+- The remaining ranks (4–100) are paginated, with navigation buttons to move between pages.
+- Use the pagination controls (< and >) to navigate through the list of ranks.
 
-### `npm run build`
+## File Structure
+```
+leaderboard/
+├── public/
+│   ├── index.html
+│   ├── images/ (contains avatar1.jpg to avatar100.jpg)
+├── src/
+│   ├── components/
+│   │   ├── TopRanks.js (displays top 3 ranks)
+│   │   ├── RankList.js (displays paginated ranks 4–100)
+│   │   ├── Pagination.js (handles pagination logic)
+│   ├── data/
+│   │   ├── users.json (contains 100 user records)
+│   ├── App.js (main application component)
+│   ├── App.css (centralized styling)
+│   ├── index.js (entry point)
+├── package.json (project dependencies and scripts)
+├── README.md (this file)
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Functionality
+- **TopRanks Component**: Renders the top 3 users with their rank, name, points, and avatar. These are sticky and remain visible while scrolling.
+- **RankList Component**: Displays a paginated list of users from rank 4 onwards, with 20 users per page.
+- **Pagination Component**: Provides navigation buttons to switch between pages, with active page highlighting and disabled states for first/last pages.
+- **State Management**: Uses React's useState hook to manage the current page and update the displayed ranks accordingly.
+- **Responsive Layout**: Media queries in App.css adjust the layout for mobile devices (e.g., stacking items vertically).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Styling
+- **Bootstrap**: Provides base styling for responsiveness and layout.
+- **Custom CSS**: Defined in App.css, it includes:
+  - Orange background (#f8a31d) for the top ranks section.
+  - Gold (#ffd700), silver (#c0c0c0), and default styling for top 3 ranks.
+  - Responsive adjustments for avatars, text, and pagination buttons on mobile screens.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m "Add new feature"`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
 
-### `npm run eject`
+## License
+This project is licensed under the MIT License. See the LICENSE file for details (if applicable).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contact
+For questions or support, please open an issue on the GitHub repository or contact the developer at your-email@example.com.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acknowledgments
+- Inspired by the reference screenshot provided.
+- Built using React.js, Bootstrap, and custom CSS.
+- Thanks to the open-source community for tools and libraries.
